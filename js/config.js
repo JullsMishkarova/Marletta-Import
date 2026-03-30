@@ -11,7 +11,7 @@ window.MARLETTA_CONFIG = {
   dataSource: {
     mode: "google-sheet",
     googleSheet: {
-      spreadsheetId: "aztbLn83z1ouoGdt7hmaIYiOvblNVAAldE",
+      spreadsheetId: "1WmNf4M-c-aztbLn83z1ouoGdt7hmaIYiOvblNVAAldE",
       categoriesSheet: "Categories",
       productsSheet: "Products",
       attributesSheet: "Attributes"
