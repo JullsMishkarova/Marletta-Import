@@ -1,0 +1,22 @@
+﻿category_id,parent_id,level,slug,name_bg,menu_label,short_description,hero_title,hero_subtitle,image,sort_order,is_active
+CAT-FENCES,,1,ogradi,Огради,Огради,"Решения за дворни, жилищни и бизнес обекти.",Огради за сигурност и завършен вид,"Ламелни, панелни и дворни решения за частни и бизнес обекти.",assets/cat-fences-main.jpg,1,Да
+CAT-SYSTEMS,,1,ogradni-sistemi,Оградни системи,Оградни системи,"Пана, колове, мрежи, портални решения и аксесоари.",Оградни системи и аксесоари,"Практична продуктова база за монтаж, завършване и разширение на периметър.",assets/cat-systems.jpg,2,Да
+CAT-DOORS,,1,vrati,Интериорни и блиндирани врати,Врати,"Вътрешни, входни и защитни решения.",Врати за интериор и сигурност,"Практичен избор за апартаменти, къщи, офиси и търговски площи.",assets/cat-doors.jpg,3,Да
+CAT-MAT,,1,stroitelni-materiali,Строителни материали,Материали,"Сухи смеси, изолации, крепеж и основни строителни продукти.",Строителни материали за обекти,"Практичен асортимент за строеж, ремонт и довършителни работи.",assets/cat-materials.jpg,4,Да
+CAT-TILES,,1,plochki,Плочки,Плочки,Интериорни и екстериорни плочки и гранитогрес.,Плочки за интериор и екстериор,"Решения за бани, кухни, тераси и външни зони.",assets/cat-tiles.jpg,5,Да
+CAT-GRANITE,,1,granit,Гранит,Гранит,"Гранитни плочи, стъпала и детайли.",Гранит за натоварени зони,"Издръжливи решения за стъпала, външни настилки и фасадни елементи.",assets/cat-granite.jpg,6,Да
+CAT-STONE,,1,kamak,Камък,Камък,Естествен и декоративен камък за облицовки и акценти.,Камък за облицовки и екстериор,"Подходящ за фасади, огради, дворове и декоративни зони.",assets/cat-stone.jpg,7,Да
+SUB-LAM,CAT-FENCES,2,lamelni-ogradi,Ламелни огради,Ламелни,Съвременни хоризонтални решения с по-висока защита на личното пространство.,,,assets/hero-slide-1.jpg,10,Да
+SUB-YARD,CAT-FENCES,2,dvorni-ogradi,Дворни огради,Дворни,Класически решения за частни имоти и вилни зони.,,,assets/cat-fences-main.jpg,11,Да
+SUB-PANELS,CAT-SYSTEMS,2,ogradni-pana,Оградни пана,Пана,Поцинковани и прахово боядисани панели за цялостни системи.,,,assets/cat-fences-main.jpg,12,Да
+SUB-MESH,CAT-SYSTEMS,2,ogradni-mrezhi,Оградни мрежи,Мрежи,"Практични решения за дворове, земеделски и индустриални площи.",,,assets/cat-fences-alt.jpg,13,Да
+SUB-POSTS,CAT-SYSTEMS,2,kolove-i-aksesoari,Колове и аксесоари,Колове,"Колове, капачки, скоби, тел и монтажни елементи.",,,assets/cat-systems.jpg,14,Да
+SUB-GATES,CAT-SYSTEMS,2,portalni-sistemi,Портални системи,Портали,Плъзгащи и двукрили системи за контрол на достъпа.,,,assets/cat-systems.jpg,15,Да
+SUB-INT,CAT-DOORS,2,interiorni-vrati,Интериорни врати,Интериорни,"Модели за жилища, офиси и търговски площи.",,,assets/cat-doors.jpg,16,Да
+SUB-SEC,CAT-DOORS,2,blindirani-vrati,Блиндирани врати,Блиндирани,За по-висока сигурност и стабилност на входове.,,,assets/cat-doors.jpg,17,Да
+SUB-PORC,CAT-TILES,2,granitogres,Гранитогрес,Гранитогрес,Устойчиви решения за натоварени вътрешни и външни площи.,,,assets/cat-tiles.jpg,18,Да
+SUB-OUTT,CAT-TILES,2,vunshni-plochki,Външни плочки,Външни,"Плочки за тераси, дворове и външни пътеки.",,,assets/cat-tiles.jpg,19,Да
+SUB-STEP,CAT-GRANITE,2,granitni-stupala,Гранитни стъпала,Стъпала,Гранитни стъпала и челни детайли.,,,assets/cat-granite.jpg,20,Да
+SUB-CLAD,CAT-STONE,2,oblicovuchen-kamuk,Облицовъчен камък,Облицовки,"Камък за фасади, огради и декоративни елементи.",,,assets/cat-stone.jpg,21,Да
+SUB-MIX,CAT-MAT,2,suhi-smesi,Сухи смеси,Сухи смеси,"Лепила, шпакловки, фуги и разтвори.",,,assets/cat-materials.jpg,22,Да
+SUB-INS,CAT-MAT,2,izolacii,Изолации,Изолации,"XPS, EPS и съпътстващи материали.",,,assets/cat-materials.jpg,23,Да
