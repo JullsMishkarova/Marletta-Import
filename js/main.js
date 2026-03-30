@@ -478,17 +478,37 @@ function showHero(index) {
 }
 
 function initHero() {
-  ELS.heroSlides.forEach((_, i) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.setAttribute('aria-label', `Слайд ${i + 1}`);
-    btn.addEventListener('click', () => { showHero(i); restartHeroAutoplay(); });
-    ELS.heroDots.appendChild(btn);
+ const slides = document.querySelectorAll('.hero-slide');
+const prevBtn = document.querySelector('.hero-arrow-prev');
+const nextBtn = document.querySelector('.hero-arrow-next');
+
+let current = 0;
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove('active');
   });
-  ELS.heroPrev.addEventListener('click', () => { showHero(STATE.heroIndex - 1); restartHeroAutoplay(); });
-  ELS.heroNext.addEventListener('click', () => { showHero(STATE.heroIndex + 1); restartHeroAutoplay(); });
-  showHero(0);
-  restartHeroAutoplay();
+  slides[index].classList.add('active');
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+// старт
+if (slides.length) {
+  showSlide(current);
+  setInterval(nextSlide, 5000);
+}
+
+nextBtn?.addEventListener('click', nextSlide);
+prevBtn?.addEventListener('click', prevSlide);
 }
 
 function restartHeroAutoplay() {
