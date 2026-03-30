@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marletta | Детайли за продукт</title>
+  <meta name="description" content="Детайлна страница за продукт от каталога на Marletta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header site-header-inner">
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html#top" aria-label="Marletta">
+        <img src="assets/marletta-logo-transparent.png" alt="Marletta logo" />
+        <span class="logo-tagline">Внос и продажба на едро и дребно</span>
+      </a>
+      <div class="nav-actions nav-actions-single">
+        <a class="header-cta" href="index.html#catalog">Назад към каталога</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section detail-page">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html#catalog">Каталог</a> <span>›</span> <span id="detail-breadcrumb">Детайли</span></div>
+      <div id="detail-shell" class="detail-shell"></div>
+      <div id="detail-empty" class="empty-state" hidden>Продуктът не е намерен. Колко удобно, нали.</div>
+    </div>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/product.js"></script>
+</body>
+</html>

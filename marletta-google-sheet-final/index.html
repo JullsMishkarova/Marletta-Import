@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marletta | Каталог с Google Sheets интеграция</title>
+  <meta name="description" content="Marletta - каталог за оградни системи, врати, строителни материали, плочки, гранит и камък. Google Sheets управление, филтри и детайлни продуктови карти." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="logo" href="index.html#top" aria-label="Marletta">
+        <img src="assets/marletta-logo-transparent.png" alt="Marletta logo" />
+        <span class="logo-tagline">Внос и продажба на едро и дребно</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <a href="#categories">Категории</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#workflow">Как работи</a>
+        <a href="#about">За нас</a>
+        <a href="#contact">Контакти</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="header-cta" href="#catalog">Виж каталога</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Отвори меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-slider">
+        <div class="hero-slide active" style="background-image:url('assets/hero-slide-1.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/hero-slide-2.jpg')"></div>
+        <div class="hero-slide" style="background-image:url('assets/hero-slide-3.jpg')"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <button class="hero-arrow hero-arrow-prev" type="button" aria-label="Предишен слайд">‹</button>
+      <button class="hero-arrow hero-arrow-next" type="button" aria-label="Следващ слайд">›</button>
+
+      <div class="container hero-inner">
+        <div class="hero-card">
+          <span class="eyebrow">директен вносител • каталог от таблица • стабилна архитектура</span>
+          <h1 id="hero-title">Оградни системи, врати и строителни решения</h1>
+          <p id="hero-text">Каталогът е подготвен за реални продуктови листи, филтри, динамични badges и управление през Google Sheets без постоянно пренаписване на сайта.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#catalog">Разгледай каталога</a>
+            <a class="btn btn-secondary-dark" href="#workflow">Как работи</a>
+          </div>
+          <div class="hero-nav">
+            <div class="hero-dots" id="hero-dots"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-strip">
+      <div class="container stats-grid">
+        <article class="stat-card">
+          <strong data-stat="products">0</strong>
+          <span>активни продукта</span>
+        </article>
+        <article class="stat-card">
+          <strong data-stat="categories">0</strong>
+          <span>основни категории</span>
+        </article>
+        <article class="stat-card">
+          <strong data-stat="available">0</strong>
+          <span>в наличност</span>
+        </article>
+        <article class="stat-card">
+          <strong id="source-badge">Източник: зареждане...</strong>
+          <span>Google Sheets с локален fallback</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="categories">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">Категории</span>
+            <h2>Основни продуктови групи</h2>
+          </div>
+          <p>Менюто и категориите се генерират от таблицата. Добавяш нов slug, име и изображение, а сайтът вече знае какво да покаже.</p>
+        </div>
+        <div class="category-grid" id="category-cards"></div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">Каталог</span>
+            <h2>Продукти, зареждани от таблица</h2>
+          </div>
+          <p>Търсене по име, SKU и описание. Филтри по категория, подкатегория, материал, цвят, наличност и min/max цена. Нормалните неща, които клиентът очаква и които не искаме да търсим под камък.</p>
+        </div>
+
+        <div class="catalog-shell">
+          <div class="catalog-tools">
+            <div class="tool-grid">
+              <label class="field">
+                <span>Търсене</span>
+                <input id="catalog-search" class="catalog-search" type="search" placeholder="Търси по продукт, SKU, материал..." />
+              </label>
+
+              <label class="field">
+                <span>Категория</span>
+                <select id="filter-category"></select>
+              </label>
+
+              <label class="field">
+                <span>Подкатегория</span>
+                <select id="filter-subcategory"></select>
+              </label>
+
+              <label class="field">
+                <span>Материал</span>
+                <select id="filter-material"></select>
+              </label>
+
+              <label class="field">
+                <span>Цвят</span>
+                <select id="filter-color"></select>
+              </label>
+
+              <label class="field">
+                <span>Наличност</span>
+                <select id="filter-stock"></select>
+              </label>
+
+              <label class="field">
+                <span>Мин. цена</span>
+                <input id="filter-price-min" type="number" min="0" step="0.01" placeholder="0" />
+              </label>
+
+              <label class="field">
+                <span>Макс. цена</span>
+                <input id="filter-price-max" type="number" min="0" step="0.01" placeholder="2000" />
+              </label>
+
+              <label class="field">
+                <span>Сортиране</span>
+                <select id="sort-products">
+                  <option value="name-asc">Име A-Z</option>
+                  <option value="price-asc">Цена ↑</option>
+                  <option value="price-desc">Цена ↓</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="catalog-meta-row">
+              <label class="check-inline"><input type="checkbox" id="filter-featured" /> Само акцентни</label>
+              <button class="btn btn-secondary-dark btn-small" id="clear-filters" type="button">Изчисти филтрите</button>
+            </div>
+
+            <div class="catalog-meta">
+              <div>Показани продукти: <strong id="products-count">0</strong></div>
+              <div>Данните се четат от таблица. Фронтендът ги подрежда така, че да не изглежда като счетоводен файл с хубаво лого.</div>
+            </div>
+          </div>
+
+          <div class="product-grid" id="product-grid"></div>
+          <div class="empty-state" id="empty-state" hidden>Няма съвпадащи продукти с тези филтри.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="workflow">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">Как работи</span>
+            <h2>Една архитектура, едно място за данните</h2>
+          </div>
+          <p>Каталогът вече е заключен като логика. Оттук нататък се пълни таблицата и се надгражда, вместо да се подменя целият фронтенд през ден.</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <strong>1</strong>
+            <h3>Products</h3>
+            <p>Тук живеят продуктите, цените, изображенията, активността, наличността и визуалните акценти.</p>
+          </article>
+          <article class="process-card">
+            <strong>2</strong>
+            <h3>Categories</h3>
+            <p>Тук идват основните категории, подкатегориите, имената, hero текстовете и логиката на филтрите.</p>
+          </article>
+          <article class="process-card">
+            <strong>3</strong>
+            <h3>Сайтът чете и показва</h3>
+            <p>Google Sheets е master източникът. Ако той не отговори, имаш локален fallback, за да не зяпа клиентът празна страница като наказание.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="about">
+      <div class="container about-grid">
+        <div>
+          <div class="section-head single-col">
+            <div>
+              <span class="section-tag">За Marletta</span>
+              <h2>Каталог с реална основа за растеж</h2>
+            </div>
+          </div>
+          <p class="text-block">Тази версия е направена да издържи нормална работа: категории, филтри, продуктови карти, промоции, статуси и детайли на продукт. Не е просто демо hero с три снимки и молитва.</p>
+          <p class="text-block">Следващото ниво, когато му дойде времето, е онлайн магазин, заявки, синхронизация с отделен inventory модул и по-сериозни продуктови страници. Но архитектурата оттук нататък вече е стабилна.</p>
+        </div>
+
+        <div>
+          <div class="about-panel">
+            <ul>
+              <li>Google Sheets като централен каталог</li>
+              <li>Филтри по категория, цвят, материал, цена и наличност</li>
+              <li>Динамични badges за наличност, промоция и акцент</li>
+              <li>Детайлна продуктова страница с готова основа за запитване</li>
+            </ul>
+          </div>
+
+          <div class="contact-box" id="contact">
+            <h3>Контакт и запитвания</h3>
+            <p>Контактите са примерни и после спокойно ще се сменят с реалните данни на клиента.</p>
+            <div class="contact-actions">
+              <a class="btn btn-secondary-dark" href="tel:+359880000000">Обади се</a>
+              <a class="btn btn-secondary-dark" href="mailto:office@marletta.bg">Изпрати имейл</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <span>Marletta</span>
+      <span>Каталог с Google Sheets интеграция и локален fallback</span>
+    </div>
+  </footer>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
