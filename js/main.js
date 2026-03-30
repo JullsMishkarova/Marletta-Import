@@ -182,10 +182,10 @@ function parseCsv(text) {
     } else if (char === "," && !inQuotes) {
       row.push(value);
       value = "";
-    } else if ((char === "
-" || char === "") && !inQuotes) {
-      if (char === "" && next === "
-") i++;
+    } else if ((char === "\n" || char === "\r") && !inQuotes) {
+      if (char === "\r" && next === "\n") {
+        i++;
+      }
       row.push(value);
       rows.push(row);
       row = [];
@@ -202,11 +202,15 @@ function parseCsv(text) {
 
   const cleanRows = rows.filter(r => r.some(cell => String(cell).trim() !== ""));
   if (!cleanRows.length) return [];
-  const headers = cleanRows[0].map((header, index) => String(header || "").replace(/^﻿/, "").trim() || `col_${index}`);
-  return cleanRows.slice(1).map(r => {
+
+  const headers = cleanRows[0].map(header =>
+    String(header || "").replace(/^﻿/, "").trim()
+  );
+
+  return cleanRows.slice(1).map(row => {
     const obj = {};
     headers.forEach((header, index) => {
-      obj[header] = (r[index] ?? "").trim();
+      obj[header] = row[index] ?? "";
     });
     return obj;
   });
